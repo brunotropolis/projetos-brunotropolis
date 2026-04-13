@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | brunotropolis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+        .header { text-align: center; padding: 48px 20px 32px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 1px solid #1e293b; }
+        .header h1 { font-size: 28px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
+        .header p { font-size: 15px; color: #94a3b8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+        .section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-bottom: 16px; padding-left: 4px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 12px; position: relative; overflow: hidden; }
+        .card:hover { border-color: #475569; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .card-icon { font-size: 32px; line-height: 1; }
+        .card-title { font-size: 17px; font-weight: 600; color: #f1f5f9; }
+        .card-desc { font-size: 13px; color: #94a3b8; line-height: 1.5; }
+        .card-url { font-size: 11px; color: #475569; font-family: 'SF Mono', 'Fira Code', monospace; margin-top: auto; padding-top: 8px; border-top: 1px solid #334155; }
+        .badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 6px; }
+        .badge-interno { background: #1e3a5f; color: #7dd3fc; }
+        .card[data-color="orange"] { border-left: 3px solid #fb923c; }
+        .footer { text-align: center; padding: 24px 20px; color: #475569; font-size: 12px; border-top: 1px solid #1e293b; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .header h1 { font-size: 22px; } }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>brunotropolis</h1>
+    <p>Hub de projetos pessoais</p>
+</div>
+<div class="container">
+    <div class="section-title">Projetos</div>
+    <div class="grid">
+        <a class="card" data-color="orange" href="https://brunotropolis.github.io/pelada-manager/" target="_blank">
+            <span class="badge badge-interno">Interno</span>
+            <div class="card-icon">⚽</div>
+            <div class="card-title">Pelada Manager</div>
+            <div class="card-desc">Gerenciador de pelada: cadastro de jogadores, confirmacao de presenca, sorteio de times e avaliacao pos-jogo.</div>
+            <div class="card-url">brunotropolis.github.io/pelada-manager</div>
+        </a>
+    </div>
+</div>
+<div class="footer">
+    <span>Atualizado em <span id="lastUpdate"></span></span> &middot; brunotropolis
+</div>
+<script>
+    document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+</script>
+</body>
+</html>
