@@ -4,73 +4,535 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos | brunotropolis</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕶️</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
     <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --neon-pink: #ff2975;
+            --neon-cyan: #00f0ff;
+            --neon-purple: #b026ff;
+            --neon-green: #39ff14;
+            --neon-orange: #ff9933;
+            --neon-yellow: #fff200;
+            --bg-deep: #07001a;
+            --bg-mid: #14002b;
+            --text-soft: #d8c8ff;
+            --text-dim: #8a7ab8;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
-        .header { text-align: center; padding: 48px 20px 32px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 1px solid #1e293b; }
-        .header h1 { font-size: 28px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
-        .header p { font-size: 15px; color: #94a3b8; }
-        .container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
-        .section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-bottom: 16px; padding-left: 4px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px; }
-        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 12px; position: relative; overflow: hidden; }
-        .card:hover { border-color: #475569; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-        .card-icon { font-size: 32px; line-height: 1; }
-        .card-title { font-size: 17px; font-weight: 600; color: #f1f5f9; }
-        .card-desc { font-size: 13px; color: #94a3b8; line-height: 1.5; }
-        .card-url { font-size: 11px; color: #475569; font-family: 'SF Mono', 'Fira Code', monospace; margin-top: auto; padding-top: 8px; border-top: 1px solid #334155; }
-        .badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 6px; }
-        .badge-interno { background: #1e3a5f; color: #7dd3fc; }
-        .card[data-color="orange"] { border-left: 3px solid #fb923c; }
-        .footer { text-align: center; padding: 24px 20px; color: #475569; font-size: 12px; border-top: 1px solid #1e293b; }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .header h1 { font-size: 22px; } }
+        html, body { overflow-x: hidden; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-soft);
+            min-height: 100vh;
+            position: relative;
+        }
+        /* === STARFIELD === */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 60% 70%, #fff, transparent),
+                radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+                radial-gradient(2px 2px at 80% 10%, #fff, transparent),
+                radial-gradient(1px 1px at 90% 60%, #fff, transparent),
+                radial-gradient(1px 1px at 33% 80%, #fff, transparent),
+                radial-gradient(2px 2px at 15% 60%, #fff, transparent),
+                radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+                radial-gradient(1px 1px at 45% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 5% 90%, #fff, transparent),
+                radial-gradient(ellipse at top, #2a0050 0%, transparent 60%),
+                linear-gradient(180deg, #07001a 0%, #14002b 60%, #2a0050 100%);
+            background-size: 600px 600px, 400px 400px, 300px 300px, 800px 800px, 500px 500px, 450px 450px, 350px 350px, 700px 700px, 250px 250px, 550px 550px, 100% 100%, 100% 100%;
+            z-index: -2;
+            animation: twinkle 8s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* === HERO COM SOL + GRID === */
+        .hero {
+            position: relative;
+            padding: 80px 20px 100px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(255, 41, 117, 0.4);
+            box-shadow: 0 0 60px rgba(176, 38, 255, 0.3);
+        }
+        /* Sol gradient */
+        .sun {
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -20%);
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #fff200 0%, #ff9933 30%, #ff2975 65%, #b026ff 100%);
+            box-shadow: 0 0 80px rgba(255, 41, 117, 0.6), 0 0 140px rgba(176, 38, 255, 0.4);
+            z-index: 0;
+        }
+        /* Linhas horizontais cortando o sol */
+        .sun::before {
+            content: '';
+            position: absolute;
+            inset: 50% 0 0 0;
+            background: repeating-linear-gradient(
+                180deg,
+                transparent 0,
+                transparent 12px,
+                var(--bg-deep) 12px,
+                var(--bg-deep) 18px
+            );
+        }
+        /* Grid floor */
+        .grid-floor {
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 200px;
+            background:
+                linear-gradient(180deg, transparent 0%, rgba(255, 41, 117, 0.3) 100%),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, var(--neon-pink) 40px, var(--neon-pink) 41px),
+                repeating-linear-gradient(0deg, transparent, transparent 20px, var(--neon-pink) 20px, var(--neon-pink) 21px);
+            transform: translateX(-50%) perspective(400px) rotateX(60deg);
+            transform-origin: bottom;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(32px, 6vw, 56px);
+            letter-spacing: 6px;
+            background: linear-gradient(180deg, #fff 0%, #fff200 40%, #ff2975 80%, #b026ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 41, 117, 0.6);
+            filter: drop-shadow(0 0 8px rgba(255, 41, 117, 0.5));
+            margin-bottom: 12px;
+        }
+        .hero .subtitle {
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            letter-spacing: 2px;
+        }
+        .hero .blink {
+            animation: blink 1.2s steps(2, start) infinite;
+        }
+        @keyframes blink { to { visibility: hidden; } }
+
+        /* === CONTAINER === */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === SECTION === */
+        .section {
+            margin-bottom: 56px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 41, 117, 0.3);
+        }
+        .section-icon {
+            font-size: 28px;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .section-title.cyan { color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan); }
+        .section-title.green { color: var(--neon-green); text-shadow: 0 0 12px var(--neon-green); }
+        .section-title.pink { color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink); }
+
+        .subsection-title {
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            letter-spacing: 3px;
+            color: var(--neon-purple);
+            text-shadow: 0 0 8px var(--neon-purple);
+            margin: 32px 0 16px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subsection-title::before,
+        .subsection-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+        }
+
+        /* === GRID & CARDS === */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(20, 0, 43, 0.8) 0%, rgba(42, 0, 80, 0.6) 100%);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(176, 38, 255, 0.3);
+            border-radius: 8px;
+            padding: 22px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow: hidden;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent, var(--neon-pink));
+            box-shadow: 0 0 12px var(--accent, var(--neon-pink));
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, var(--accent, var(--neon-pink)) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent, var(--neon-pink));
+            box-shadow: 0 0 24px rgba(255, 41, 117, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+        }
+        .card:hover::after { opacity: 0.08; }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .card-icon {
+            font-size: 30px;
+            line-height: 1;
+            filter: drop-shadow(0 0 6px var(--accent, var(--neon-pink)));
+        }
+        .badge {
+            font-family: 'VT323', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid currentColor;
+        }
+        .badge.live { color: var(--neon-green); box-shadow: 0 0 8px rgba(57, 255, 20, 0.4); }
+        .badge.interno { color: var(--neon-cyan); box-shadow: 0 0 8px rgba(0, 240, 255, 0.4); }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 6px var(--accent, var(--neon-pink));
+        }
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.55;
+            opacity: 0.85;
+        }
+        .card-url {
+            font-family: 'VT323', monospace;
+            font-size: 14px;
+            color: var(--accent, var(--neon-pink));
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255, 41, 117, 0.2);
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
+
+        /* === ACCENTS === */
+        .card[data-accent="pink"]   { --accent: var(--neon-pink); }
+        .card[data-accent="cyan"]   { --accent: var(--neon-cyan); }
+        .card[data-accent="purple"] { --accent: var(--neon-purple); }
+        .card[data-accent="green"]  { --accent: var(--neon-green); }
+        .card[data-accent="orange"] { --accent: var(--neon-orange); }
+        .card[data-accent="yellow"] { --accent: var(--neon-yellow); }
+
+        /* === FOOTER === */
+        .footer {
+            text-align: center;
+            padding: 32px 20px 48px;
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(176, 38, 255, 0.2);
+        }
+        .footer .triangle {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* === SCAN LINES (sutil) === */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0,
+                transparent 2px,
+                rgba(255, 255, 255, 0.015) 2px,
+                rgba(255, 255, 255, 0.015) 3px
+            );
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero { padding: 60px 16px 80px; }
+            .sun { width: 200px; height: 200px; }
+            .container { padding: 40px 16px 60px; }
+            .section-title { font-size: 16px; letter-spacing: 2px; }
+        }
     </style>
 </head>
 <body>
-<div class="header">
-    <h1>brunotropolis</h1>
-    <p>Hub de projetos pessoais</p>
-</div>
-<div class="container">
-    <div class="section-title">Projetos</div>
-    <div class="grid">
-        <a class="card" data-color="orange" href="https://controle.brunotropolis.com.br/" target="_blank">
-            <span class="badge badge-interno">Interno</span>
-            <div class="card-icon">📋</div>
-            <div class="card-title">Controle de Projetos</div>
-            <div class="card-desc">Checklist de entregas: status dos projetos por sprint, badges de prioridade, pendencias bloqueadas e roadmap unificado.</div>
-            <div class="card-url">controle.brunotropolis.com.br</div>
-        </a>
-<a class="card" data-color="orange" href="https://financeiro.brunotropolis.com.br/" target="_blank">
-            <span class="badge badge-interno">Interno</span>
-            <div class="card-icon">💰</div>
-            <div class="card-title">Financeiro</div>
-            <div class="card-desc">Painel de controle financeiro: contas, cartoes, recorrencias, faturamento Greenn/afiliados, projecao de fluxo de caixa.</div>
-            <div class="card-url">financeiro.brunotropolis.com.br</div>
-        </a>
-        <a class="card" data-color="orange" href="https://videos.brunotropolis.com.br/" target="_blank">
-            <span class="badge badge-interno">Interno</span>
-            <div class="card-icon">🎬</div>
-            <div class="card-title">Analisador de Video</div>
-            <div class="card-desc">Transcricao + analise visual de edicao de Reels, TikTok, Shorts e YouTube. Identifica hook, timeline, ritmo e tecnicas de retencao.</div>
-            <div class="card-url">videos.brunotropolis.com.br</div>
-        </a>
-        <a class="card" data-color="orange" href="https://copy.brunotropolis.com.br/" target="_blank">
-            <span class="badge badge-interno">Interno</span>
-            <div class="card-icon">✍️</div>
-            <div class="card-title">Copy Agent</div>
-            <div class="card-desc">Gerador de roteiros do canal Brunotropolis com tom e quadros fixos. Quadros: Dia de Maldade, TOP 5, Testou, Maratona, Diario.</div>
-            <div class="card-url">copy.brunotropolis.com.br</div>
-        </a>
+
+<header class="hero">
+    <div class="sun"></div>
+    <div class="grid-floor"></div>
+    <div class="hero-content">
+        <h1>BRUNOTROPOLIS</h1>
+        <div class="subtitle">&gt; HUB DE PROJETOS<span class="blink">_</span></div>
     </div>
-</div>
-<div class="footer">
-    <span>Atualizado em <span id="lastUpdate"></span></span> &middot; brunotropolis
-</div>
+</header>
+
+<main class="container">
+
+    <!-- ============ BRUNOTROPOLIS ============ -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-icon" style="color: var(--neon-cyan);">🕶️</span>
+            <h2 class="section-title cyan">brunotropolis</h2>
+        </div>
+        <div class="grid">
+            <a class="card" data-accent="cyan" href="https://controle.brunotropolis.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">📋</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">Controle de Projetos</div>
+                <div class="card-desc">Checklist de entregas: status dos projetos por sprint, badges de prioridade, pendências bloqueadas e roadmap unificado.</div>
+                <div class="card-url">controle.brunotropolis.com.br</div>
+            </a>
+            <a class="card" data-accent="green" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">💰</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">Caixa (Financeiro v2)</div>
+                <div class="card-desc">Painel financeiro enxuto: lançamentos, recorrências, parceladas e projeção de fluxo de caixa em 6 meses.</div>
+                <div class="card-url">caixa.brunotropolis.com.br</div>
+            </a>
+            <a class="card" data-accent="orange" href="https://videos.brunotropolis.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🎬</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">Analisador de Vídeo</div>
+                <div class="card-desc">Transcrição + análise visual de edição de Reels, TikTok, Shorts e YouTube. Identifica hook, timeline, ritmo e técnicas de retenção.</div>
+                <div class="card-url">videos.brunotropolis.com.br</div>
+            </a>
+            <a class="card" data-accent="pink" href="https://copy.brunotropolis.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">✍️</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">Copy Agent</div>
+                <div class="card-desc">Gerador de roteiros do canal Brunotropolis com tom e quadros fixos. Quadros: Dia de Maldade, TOP 5, Testou, Maratona, Diário.</div>
+                <div class="card-url">copy.brunotropolis.com.br</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ BUSCADOR GEEK ============ -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-icon" style="color: var(--neon-green);">💻</span>
+            <h2 class="section-title green">Buscador Geek</h2>
+        </div>
+        <div class="grid">
+            <a class="card" data-accent="green" href="https://brunotropolis.github.io/buscador-geek/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🔍</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Buscador Geek</div>
+                <div class="card-desc">Formulário de cadastro de ofertas para os canais de WhatsApp. Suporta ML, Amazon e Shopee com detecção automática de plataforma.</div>
+                <div class="card-url">brunotropolis.github.io/buscador-geek</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ MANUAL DO RECÉM-NASCIDO ============ -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-icon" style="color: var(--neon-pink);">👶</span>
+            <h2 class="section-title pink">Manual do Recém-Nascido</h2>
+        </div>
+        <div class="grid">
+            <a class="card" data-accent="green" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">💬</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">CRM Atendimento</div>
+                <div class="card-desc">Painel WhatsApp das alunas: inbox unificada, mensagens salvas, transcrição de áudio, sequências automáticas e contador de acompanhamento.</div>
+                <div class="card-url">crm.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="cyan" href="https://dash.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">📊</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Meta Ads Dashboard</div>
+                <div class="card-desc">Dashboard de campanhas Meta Ads com assistente IA (Austin Powers), alertas e relatório diário no WhatsApp.</div>
+                <div class="card-url">dash.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="pink" href="https://meteorico.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🚀</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Funil Meteórico</div>
+                <div class="card-desc">Dashboard do funil de lançamento meteórico. Métricas, cronograma e gestão dos clubes Tetê e Soninho.</div>
+                <div class="card-url">meteorico.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="purple" href="https://dashquiz.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🧒</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Dashboard Quiz Sono</div>
+                <div class="card-desc">Dashboard do quiz de sono do bebê. Métricas, perfis identificados e captação de leads.</div>
+                <div class="card-url">dashquiz.manualdorecemnascido.com.br</div>
+            </a>
+        </div>
+
+        <!-- BIBLIOTECA DE PROJETOS (sub) -->
+        <div class="subsection-title">◆ Biblioteca de Projetos ◆</div>
+        <div class="grid">
+            <a class="card" data-accent="cyan" href="https://quiz.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">✨</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Quiz Sono do Bebê</div>
+                <div class="card-desc">Quiz interativo que identifica o perfil de sono do bebê. Versão pública para captação de leads.</div>
+                <div class="card-url">quiz.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="yellow" href="https://cursos.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🎓</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Plataforma de Cursos</div>
+                <div class="card-desc">Área de membros Cademi com cursos, guias e aulas complementares da Dream Baby.</div>
+                <div class="card-url">cursos.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="pink" href="https://pesquisa.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🤰</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Pesquisa Parto</div>
+                <div class="card-desc">Formulário público. Quem responder de forma válida ganha o curso O Dia do Parto.</div>
+                <div class="card-url">pesquisa.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="purple" href="https://enxoval.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">📦</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Pesquisa Enxoval</div>
+                <div class="card-desc">Formulário público. Quem responder válida ganha o e-book Enxoval Descomplicado.</div>
+                <div class="card-url">enxoval.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="green" href="https://pesquisa.manualdorecemnascido.com.br/dashboard.html" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">📋</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">Dashboard Pesquisas</div>
+                <div class="card-desc">Dashboard interno (Parto + Enxoval). Visão geral, demografia, temas e respostas abertas.</div>
+                <div class="card-url">pesquisa.manualdorecemnascido.com.br/dashboard.html</div>
+            </a>
+            <a class="card" data-accent="cyan" href="https://pesquisa.manualdorecemnascido.com.br/relatorio.html" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">📈</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Relatório Pesquisas</div>
+                <div class="card-desc">Versão pública do dashboard, pra compartilhar com o time. Mesmas métricas agregadas.</div>
+                <div class="card-url">pesquisa.manualdorecemnascido.com.br/relatorio.html</div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <span class="triangle">▲</span>
+    &nbsp;ATUALIZADO EM <span id="lastUpdate"></span>&nbsp;
+    <span class="triangle">▲</span>
+    &nbsp;&nbsp;BRUNOTROPOLIS &copy; <span id="year"></span>
+</footer>
+
 <script>
-    document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+    document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase();
+    document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
