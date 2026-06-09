@@ -11,176 +11,115 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink:    #f04299;
-            --purple:  #b447eb;
-            --cyan:    #1ab3ff;
-            --orange:  #ff8c1a;
-            --bg-base: #0d0f16;
-            --text:    #f2f2f2;
+            --pink:   #f04299;
+            --purple: #b447eb;
+            --cyan:   #1ab3ff;
+            --orange: #ff8c1a;
+            --bg:     #000;
+            --text:   #f2f2f2;
             --text-soft: #cccccc;
-            --text-dim:  #8a8aa0;
-            --border:  rgba(255,255,255,0.06);
+            --text-dim:  #7a7a8a;
+            --border: rgba(255,255,255,0.07);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { overflow-x: hidden; }
         body {
             font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-base);
+            background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             position: relative;
-            font-weight: 400;
         }
-        /* === Background gradient sutil (mesma vibe brunotropolis.com.br) === */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(180deg,
-                #120c1d 0%,
-                #1f0f2e 25%,
-                #371249 45%,
-                #4d1a3c 55%,
-                rgba(102, 64, 26, 0.3) 65%,
-                #120c1d 100%
-            );
-            z-index: -2;
-        }
-        /* Scanlines pretas bem sutis */
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: repeating-linear-gradient(0deg,
-                transparent 0,
-                transparent 2px,
-                rgba(0, 0, 0, 0.03) 2px,
-                rgba(0, 0, 0, 0.03) 4px
-            );
-            pointer-events: none;
-            z-index: 100;
-        }
-
-        /* === Decorativos: linhas horizontais sutis === */
-        .deco {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .line-h {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 1px;
-        }
-        .line-h.l1 { top: 18%; background: linear-gradient(90deg, transparent 0%, rgba(180,71,235,0.15) 30%, rgba(26,179,255,0.20) 50%, rgba(240,66,153,0.15) 70%, transparent 100%); }
-        .line-h.l2 { top: 55%; background: linear-gradient(90deg, transparent 0%, rgba(255,140,26,0.12) 40%, rgba(180,71,235,0.18) 60%, transparent 100%); }
-        .line-h.l3 { top: 82%; background: linear-gradient(90deg, transparent 0%, rgba(26,179,255,0.10) 20%, rgba(240,66,153,0.15) 80%, transparent 100%); }
-        .dot {
-            position: absolute;
-            border-radius: 50%;
-        }
-        .dot.d1 { width: 6px; height: 6px; top: 12%; right: 8%; background: var(--purple); box-shadow: 0 0 14px rgba(180,71,235,0.6); }
-        .dot.d2 { width: 4px; height: 4px; top: 40%; left: 6%; background: var(--pink); box-shadow: 0 0 10px rgba(240,66,153,0.6); }
-        .dot.d3 { width: 3px; height: 3px; top: 65%; right: 12%; background: var(--cyan); box-shadow: 0 0 6px rgba(26,179,255,0.6); }
-        .dot.d4 { width: 5px; height: 5px; top: 88%; left: 18%; background: var(--orange); box-shadow: 0 0 8px rgba(255,140,26,0.6); }
-        .dot.d5 { width: 3px; height: 3px; top: 25%; left: 32%; background: var(--cyan); box-shadow: 0 0 6px rgba(26,179,255,0.5); }
-
-        /* === HERO === */
+        /* === HERO (imagem) === */
         .hero {
             position: relative;
-            padding: 90px 20px 70px;
-            text-align: center;
+            width: 100%;
+            aspect-ratio: 2000 / 740;
+            max-height: 60vh;
             overflow: hidden;
+            background: #000;
         }
-        /* Glow radial sutil no rodapé do hero */
-        .hero::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -200px;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(70% 50% at 50% 100%,
-                rgba(240, 66, 153, 0.30) 0%,
-                rgba(255, 140, 26, 0.10) 40%,
-                transparent 70%);
-            pointer-events: none;
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
         .hero::after {
             content: '';
             position: absolute;
-            left: 50%;
-            bottom: -130px;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 250px;
-            background: radial-gradient(60% 40% at 50% 100%,
-                rgba(240, 66, 153, 0.40) 0%,
-                rgba(180, 71, 235, 0.10) 60%,
-                transparent 80%);
+            inset: 0;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                transparent 65%,
+                rgba(0, 0, 0, 0.45) 90%,
+                #000 100%);
             pointer-events: none;
         }
-        /* Linha neon horizontal no rodapé do hero */
-        .hero-line {
+        .hero-title {
             position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 2px;
-            background: linear-gradient(90deg,
-                transparent 5%,
-                rgba(240, 66, 153, 0.6) 20%,
-                rgba(240, 66, 153, 0.9) 50%,
-                rgba(240, 66, 153, 0.6) 80%,
-                transparent 95%);
-            box-shadow:
-                0 0 20px rgba(240, 66, 153, 0.5),
-                0 0 60px rgba(240, 66, 153, 0.2);
-        }
-        .hero-content {
-            position: relative;
+            left: 50%;
+            bottom: 6%;
+            transform: translateX(-50%);
+            text-align: center;
             z-index: 2;
+            width: 100%;
+            padding: 0 20px;
         }
-        .hero h1 {
+        .hero-title h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: clamp(36px, 6vw, 56px);
-            letter-spacing: 0.08em;
-            line-height: 1.1;
+            font-size: clamp(28px, 5vw, 52px);
+            letter-spacing: 0.1em;
             color: var(--text);
             text-shadow:
                 rgba(102, 255, 255, 0.7) 0 0 10px,
                 rgba(51, 255, 255, 0.5) 0 0 20px,
-                rgba(240, 66, 153, 0.5) 0 0 40px,
-                rgba(240, 66, 153, 0.3) 0 0 80px,
-                rgba(0, 0, 0, 0.5) 0 2px 4px;
+                rgba(240, 66, 153, 0.6) 0 0 40px,
+                rgba(240, 66, 153, 0.4) 0 0 80px,
+                rgba(0, 0, 0, 0.8) 0 2px 6px;
         }
-        .hero .subtitle {
-            margin-top: 16px;
+        .hero-title .subtitle {
+            margin-top: 10px;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 500;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--text-soft);
-            text-shadow: 0 0 20px rgba(240, 66, 153, 0.3);
+            text-shadow: 0 0 16px rgba(240, 66, 153, 0.4), 0 1px 4px rgba(0,0,0,0.8);
         }
 
         /* === CONTAINER === */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 70px 20px 60px;
+            padding: 70px 20px 40px;
             position: relative;
-            z-index: 1;
+        }
+
+        /* === Vetores SVG decorativos === */
+        .deco-vector {
+            position: absolute;
+            opacity: 0.18;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        .deco-vector.palm-left  { top: 60px;  left: -20px;  width: 70px;  color: var(--pink); }
+        .deco-vector.palm-right { top: 80px;  right: -20px; width: 70px;  color: var(--cyan); transform: scaleX(-1); }
+        .deco-vector.bolt       { top: 38%;   right: 8%;    width: 30px;  color: var(--orange); }
+        .deco-vector.triangle   { top: 18%;   left: 5%;     width: 48px;  color: var(--purple); }
+        .deco-vector.wave       { bottom: 8%; left: 10%;    width: 90px;  color: var(--cyan); opacity: 0.14; }
+        .deco-vector.star       { top: 25%;   right: 18%;   width: 26px;  color: var(--pink); }
+        .deco-vector.dot-cluster { bottom: 22%; right: 5%; width: 36px; color: var(--purple); opacity: 0.22; }
+        @media (max-width: 700px) {
+            .deco-vector.palm-left, .deco-vector.palm-right { display: none; }
+            .deco-vector.bolt, .deco-vector.star { display: none; }
         }
 
         /* === SECTION === */
-        .section { margin-bottom: 56px; }
+        .section { margin-bottom: 56px; position: relative; }
         .section-header {
             display: flex;
             align-items: center;
@@ -192,7 +131,6 @@
         .section-icon {
             font-size: 24px;
             line-height: 1;
-            opacity: 0.95;
         }
         .section-title {
             font-family: 'Poppins', sans-serif;
@@ -202,9 +140,8 @@
             text-transform: uppercase;
             color: var(--text);
             text-shadow:
-                rgba(26, 255, 255, 0.4) 0 0 10px,
-                rgba(240, 66, 153, 0.25) 0 0 25px,
-                rgba(0, 0, 0, 0.4) 0 2px 4px;
+                rgba(26, 255, 255, 0.35) 0 0 10px,
+                rgba(240, 66, 153, 0.22) 0 0 25px;
         }
 
         .subsection-title {
@@ -218,7 +155,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            opacity: 0.85;
+            opacity: 0.9;
         }
         .subsection-title::before,
         .subsection-title::after {
@@ -240,10 +177,7 @@
         }
         .card {
             position: relative;
-            background:
-                linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.03) 0%,
-                    rgba(255, 255, 255, 0.01) 100%);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             padding: 22px;
@@ -254,7 +188,6 @@
             gap: 10px;
             overflow: hidden;
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-            backdrop-filter: blur(6px);
         }
         .card::before {
             content: '';
@@ -268,12 +201,13 @@
         .card:hover {
             transform: translateY(-3px);
             border-color: var(--accent, rgba(240, 66, 153, 0.5));
+            background: rgba(255,255,255,0.035);
             box-shadow:
                 0 0 0 1px var(--accent, rgba(240, 66, 153, 0.3)),
-                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 10px 30px rgba(0, 0, 0, 0.4),
                 0 0 25px var(--accent-glow, rgba(240, 66, 153, 0.15));
         }
-        .card:hover::before { opacity: 0.08; }
+        .card:hover::before { opacity: 0.10; }
 
         .card-top {
             display: flex;
@@ -312,7 +246,7 @@
             font-size: 13px;
             color: var(--text-soft);
             line-height: 1.55;
-            opacity: 0.85;
+            opacity: 0.82;
         }
         .card-url {
             font-family: 'Space Grotesk', sans-serif;
@@ -325,13 +259,11 @@
             font-weight: 500;
         }
 
-        /* Card accents */
         .card[data-accent="pink"]   { --accent: rgba(240, 66, 153, 0.5);  --accent-glow: rgba(240, 66, 153, 0.25); }
         .card[data-accent="purple"] { --accent: rgba(180, 71, 235, 0.5);  --accent-glow: rgba(180, 71, 235, 0.25); }
         .card[data-accent="cyan"]   { --accent: rgba(26, 179, 255, 0.5);  --accent-glow: rgba(26, 179, 255, 0.25); }
         .card[data-accent="orange"] { --accent: rgba(255, 140, 26, 0.55); --accent-glow: rgba(255, 140, 26, 0.25); }
 
-        /* === FOOTER === */
         .footer {
             text-align: center;
             padding: 32px 20px 48px;
@@ -347,34 +279,85 @@
 
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
-            .hero { padding: 60px 16px 50px; }
-            .container { padding: 50px 16px 40px; }
+            .hero { aspect-ratio: 16 / 11; max-height: 50vh; }
+            .container { padding: 50px 16px 30px; }
             .section-title { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
-<div class="deco">
-    <div class="line-h l1"></div>
-    <div class="line-h l2"></div>
-    <div class="line-h l3"></div>
-    <div class="dot d1"></div>
-    <div class="dot d2"></div>
-    <div class="dot d3"></div>
-    <div class="dot d4"></div>
-    <div class="dot d5"></div>
-</div>
+<!-- SVG sprite com vetores reutilizáveis -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <symbol id="i-palm" viewBox="0 0 64 100">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 100 V42"/>
+                <path d="M32 42 Q20 36 8 32 Q18 30 30 38"/>
+                <path d="M32 42 Q44 36 56 32 Q46 30 34 38"/>
+                <path d="M32 40 Q26 28 18 16 Q26 22 32 32"/>
+                <path d="M32 40 Q38 28 46 16 Q38 22 32 32"/>
+                <path d="M32 38 Q32 24 32 8"/>
+                <circle cx="32" cy="42" r="1.5" fill="currentColor"/>
+                <path d="M30 100 Q30 96 32 92 M34 100 Q34 96 32 92"/>
+            </g>
+        </symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 32">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M14 2 L4 18 L11 18 L9 30 L20 12 L13 12 Z"/>
+        </symbol>
+        <symbol id="i-triangle" viewBox="0 0 48 42">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+                <path d="M24 4 L44 38 L4 38 Z"/>
+                <path d="M16 30 L32 30" opacity="0.6"/>
+                <path d="M20 24 L28 24" opacity="0.5"/>
+            </g>
+        </symbol>
+        <symbol id="i-wave" viewBox="0 0 90 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M2 12 Q11 2 22 12 T44 12 T66 12 T88 12"/>
+                <path d="M2 20 Q11 12 22 20 T44 20 T66 20 T88 20" opacity="0.55"/>
+            </g>
+        </symbol>
+        <symbol id="i-star" viewBox="0 0 26 26">
+            <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                <path d="M13 2 L13 24 M2 13 L24 13"/>
+                <path d="M5 5 L21 21 M21 5 L5 21" opacity="0.6"/>
+            </g>
+        </symbol>
+        <symbol id="i-dots" viewBox="0 0 36 36">
+            <g fill="currentColor">
+                <circle cx="6"  cy="6"  r="1.5"/>
+                <circle cx="18" cy="6"  r="1"/>
+                <circle cx="30" cy="6"  r="1.5"/>
+                <circle cx="6"  cy="18" r="1"/>
+                <circle cx="18" cy="18" r="2"/>
+                <circle cx="30" cy="18" r="1"/>
+                <circle cx="6"  cy="30" r="1.5"/>
+                <circle cx="18" cy="30" r="1"/>
+                <circle cx="30" cy="30" r="1.5"/>
+            </g>
+        </symbol>
+    </defs>
+</svg>
 
 <header class="hero">
-    <div class="hero-content">
+    <img src="hero.jpg" alt="">
+    <div class="hero-title">
         <h1>BRUNOTROPOLIS</h1>
         <div class="subtitle">Hub de Projetos</div>
     </div>
-    <div class="hero-line"></div>
 </header>
 
 <main class="container">
+
+    <!-- Vetores decorativos -->
+    <svg class="deco-vector palm-left"   viewBox="0 0 64 100"><use href="#i-palm"/></svg>
+    <svg class="deco-vector palm-right"  viewBox="0 0 64 100"><use href="#i-palm"/></svg>
+    <svg class="deco-vector triangle"    viewBox="0 0 48 42"><use href="#i-triangle"/></svg>
+    <svg class="deco-vector bolt"        viewBox="0 0 24 32"><use href="#i-bolt"/></svg>
+    <svg class="deco-vector star"        viewBox="0 0 26 26"><use href="#i-star"/></svg>
+    <svg class="deco-vector wave"        viewBox="0 0 90 24"><use href="#i-wave"/></svg>
+    <svg class="deco-vector dot-cluster" viewBox="0 0 36 36"><use href="#i-dots"/></svg>
 
     <!-- ============ BRUNOTROPOLIS ============ -->
     <section class="section">
