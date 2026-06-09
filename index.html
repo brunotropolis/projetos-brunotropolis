@@ -8,205 +8,244 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-pink: #ff2975;
-            --neon-cyan: #00f0ff;
-            --neon-purple: #b026ff;
-            --neon-green: #39ff14;
-            --neon-orange: #ff9933;
-            --neon-yellow: #fff200;
-            --bg-deep: #07001a;
-            --bg-mid: #14002b;
-            --text-soft: #d8c8ff;
-            --text-dim: #8a7ab8;
+            --pink:    #f04299;
+            --purple:  #b447eb;
+            --cyan:    #1ab3ff;
+            --orange:  #ff8c1a;
+            --bg-base: #0d0f16;
+            --text:    #f2f2f2;
+            --text-soft: #cccccc;
+            --text-dim:  #8a8aa0;
+            --border:  rgba(255,255,255,0.06);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { overflow-x: hidden; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-soft);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-base);
+            color: var(--text);
             min-height: 100vh;
             position: relative;
+            font-weight: 400;
         }
-        /* === STARFIELD === */
+        /* === Background gradient sutil (mesma vibe brunotropolis.com.br) === */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background:
-                radial-gradient(2px 2px at 20% 30%, #fff, transparent),
-                radial-gradient(1px 1px at 60% 70%, #fff, transparent),
-                radial-gradient(1px 1px at 50% 50%, #fff, transparent),
-                radial-gradient(2px 2px at 80% 10%, #fff, transparent),
-                radial-gradient(1px 1px at 90% 60%, #fff, transparent),
-                radial-gradient(1px 1px at 33% 80%, #fff, transparent),
-                radial-gradient(2px 2px at 15% 60%, #fff, transparent),
-                radial-gradient(1px 1px at 70% 40%, #fff, transparent),
-                radial-gradient(1px 1px at 45% 15%, #fff, transparent),
-                radial-gradient(1px 1px at 5% 90%, #fff, transparent),
-                radial-gradient(ellipse at top, #2a0050 0%, transparent 60%),
-                linear-gradient(180deg, #07001a 0%, #14002b 60%, #2a0050 100%);
-            background-size: 600px 600px, 400px 400px, 300px 300px, 800px 800px, 500px 500px, 450px 450px, 350px 350px, 700px 700px, 250px 250px, 550px 550px, 100% 100%, 100% 100%;
+            background: linear-gradient(180deg,
+                #120c1d 0%,
+                #1f0f2e 25%,
+                #371249 45%,
+                #4d1a3c 55%,
+                rgba(102, 64, 26, 0.3) 65%,
+                #120c1d 100%
+            );
             z-index: -2;
-            animation: twinkle 8s ease-in-out infinite;
         }
-        @keyframes twinkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        /* Scanlines pretas bem sutis */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                transparent 0,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 100;
         }
 
-        /* === HERO COM SOL + GRID === */
+        /* === Decorativos: linhas horizontais sutis === */
+        .deco {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .line-h {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+        }
+        .line-h.l1 { top: 18%; background: linear-gradient(90deg, transparent 0%, rgba(180,71,235,0.15) 30%, rgba(26,179,255,0.20) 50%, rgba(240,66,153,0.15) 70%, transparent 100%); }
+        .line-h.l2 { top: 55%; background: linear-gradient(90deg, transparent 0%, rgba(255,140,26,0.12) 40%, rgba(180,71,235,0.18) 60%, transparent 100%); }
+        .line-h.l3 { top: 82%; background: linear-gradient(90deg, transparent 0%, rgba(26,179,255,0.10) 20%, rgba(240,66,153,0.15) 80%, transparent 100%); }
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+        }
+        .dot.d1 { width: 6px; height: 6px; top: 12%; right: 8%; background: var(--purple); box-shadow: 0 0 14px rgba(180,71,235,0.6); }
+        .dot.d2 { width: 4px; height: 4px; top: 40%; left: 6%; background: var(--pink); box-shadow: 0 0 10px rgba(240,66,153,0.6); }
+        .dot.d3 { width: 3px; height: 3px; top: 65%; right: 12%; background: var(--cyan); box-shadow: 0 0 6px rgba(26,179,255,0.6); }
+        .dot.d4 { width: 5px; height: 5px; top: 88%; left: 18%; background: var(--orange); box-shadow: 0 0 8px rgba(255,140,26,0.6); }
+        .dot.d5 { width: 3px; height: 3px; top: 25%; left: 32%; background: var(--cyan); box-shadow: 0 0 6px rgba(26,179,255,0.5); }
+
+        /* === HERO === */
         .hero {
             position: relative;
-            padding: 80px 20px 100px;
+            padding: 90px 20px 70px;
             text-align: center;
             overflow: hidden;
-            border-bottom: 2px solid rgba(255, 41, 117, 0.4);
-            box-shadow: 0 0 60px rgba(176, 38, 255, 0.3);
         }
-        /* Sol gradient */
-        .sun {
-            position: absolute;
-            left: 50%;
-            top: 40%;
-            transform: translate(-50%, -20%);
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            background: linear-gradient(180deg, #fff200 0%, #ff9933 30%, #ff2975 65%, #b026ff 100%);
-            box-shadow: 0 0 80px rgba(255, 41, 117, 0.6), 0 0 140px rgba(176, 38, 255, 0.4);
-            z-index: 0;
-        }
-        /* Linhas horizontais cortando o sol */
-        .sun::before {
+        /* Glow radial sutil no rodapé do hero */
+        .hero::before {
             content: '';
             position: absolute;
-            inset: 50% 0 0 0;
-            background: repeating-linear-gradient(
-                180deg,
-                transparent 0,
-                transparent 12px,
-                var(--bg-deep) 12px,
-                var(--bg-deep) 18px
-            );
+            left: 50%;
+            bottom: -200px;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(70% 50% at 50% 100%,
+                rgba(240, 66, 153, 0.30) 0%,
+                rgba(255, 140, 26, 0.10) 40%,
+                transparent 70%);
+            pointer-events: none;
         }
-        /* Grid floor */
-        .grid-floor {
+        .hero::after {
+            content: '';
             position: absolute;
             left: 50%;
-            bottom: -20px;
+            bottom: -130px;
             transform: translateX(-50%);
-            width: 200%;
-            height: 200px;
-            background:
-                linear-gradient(180deg, transparent 0%, rgba(255, 41, 117, 0.3) 100%),
-                repeating-linear-gradient(90deg, transparent, transparent 40px, var(--neon-pink) 40px, var(--neon-pink) 41px),
-                repeating-linear-gradient(0deg, transparent, transparent 20px, var(--neon-pink) 20px, var(--neon-pink) 21px);
-            transform: translateX(-50%) perspective(400px) rotateX(60deg);
-            transform-origin: bottom;
-            opacity: 0.5;
-            z-index: 0;
+            width: 600px;
+            height: 250px;
+            background: radial-gradient(60% 40% at 50% 100%,
+                rgba(240, 66, 153, 0.40) 0%,
+                rgba(180, 71, 235, 0.10) 60%,
+                transparent 80%);
+            pointer-events: none;
+        }
+        /* Linha neon horizontal no rodapé do hero */
+        .hero-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 5%,
+                rgba(240, 66, 153, 0.6) 20%,
+                rgba(240, 66, 153, 0.9) 50%,
+                rgba(240, 66, 153, 0.6) 80%,
+                transparent 95%);
+            box-shadow:
+                0 0 20px rgba(240, 66, 153, 0.5),
+                0 0 60px rgba(240, 66, 153, 0.2);
         }
         .hero-content {
             position: relative;
             z-index: 2;
         }
         .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: clamp(32px, 6vw, 56px);
-            letter-spacing: 6px;
-            background: linear-gradient(180deg, #fff 0%, #fff200 40%, #ff2975 80%, #b026ff 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 41, 117, 0.6);
-            filter: drop-shadow(0 0 8px rgba(255, 41, 117, 0.5));
-            margin-bottom: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: clamp(36px, 6vw, 56px);
+            letter-spacing: 0.08em;
+            line-height: 1.1;
+            color: var(--text);
+            text-shadow:
+                rgba(102, 255, 255, 0.7) 0 0 10px,
+                rgba(51, 255, 255, 0.5) 0 0 20px,
+                rgba(240, 66, 153, 0.5) 0 0 40px,
+                rgba(240, 66, 153, 0.3) 0 0 80px,
+                rgba(0, 0, 0, 0.5) 0 2px 4px;
         }
         .hero .subtitle {
-            font-family: 'VT323', monospace;
-            font-size: 22px;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 10px var(--neon-cyan);
-            letter-spacing: 2px;
+            margin-top: 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-shadow: 0 0 20px rgba(240, 66, 153, 0.3);
         }
-        .hero .blink {
-            animation: blink 1.2s steps(2, start) infinite;
-        }
-        @keyframes blink { to { visibility: hidden; } }
 
         /* === CONTAINER === */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px 80px;
+            padding: 70px 20px 60px;
             position: relative;
             z-index: 1;
         }
 
         /* === SECTION === */
-        .section {
-            margin-bottom: 56px;
-        }
+        .section { margin-bottom: 56px; }
         .section-header {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 41, 117, 0.3);
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
         }
         .section-icon {
-            font-size: 28px;
-            filter: drop-shadow(0 0 8px currentColor);
+            font-size: 24px;
+            line-height: 1;
+            opacity: 0.95;
         }
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
+            color: var(--text);
+            text-shadow:
+                rgba(26, 255, 255, 0.4) 0 0 10px,
+                rgba(240, 66, 153, 0.25) 0 0 25px,
+                rgba(0, 0, 0, 0.4) 0 2px 4px;
         }
-        .section-title.cyan { color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan); }
-        .section-title.green { color: var(--neon-green); text-shadow: 0 0 12px var(--neon-green); }
-        .section-title.pink { color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink); }
 
         .subsection-title {
-            font-family: 'VT323', monospace;
-            font-size: 20px;
-            letter-spacing: 3px;
-            color: var(--neon-purple);
-            text-shadow: 0 0 8px var(--neon-purple);
-            margin: 32px 0 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.25em;
+            color: var(--text-soft);
             text-transform: uppercase;
+            margin: 36px 0 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            opacity: 0.85;
         }
         .subsection-title::before,
         .subsection-title::after {
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+            background: linear-gradient(90deg, transparent, rgba(180,71,235,0.25), transparent);
+        }
+        .subsection-title .diamond {
+            color: var(--purple);
+            text-shadow: 0 0 8px rgba(180,71,235,0.6);
         }
 
         /* === GRID & CARDS === */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 18px;
+            gap: 16px;
         }
         .card {
             position: relative;
-            background: linear-gradient(135deg, rgba(20, 0, 43, 0.8) 0%, rgba(42, 0, 80, 0.6) 100%);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(176, 38, 255, 0.3);
-            border-radius: 8px;
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.03) 0%,
+                    rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
             padding: 22px;
             text-decoration: none;
             color: inherit;
@@ -214,64 +253,60 @@
             flex-direction: column;
             gap: 10px;
             overflow: hidden;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            backdrop-filter: blur(6px);
         }
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent, var(--neon-pink));
-            box-shadow: 0 0 12px var(--accent, var(--neon-pink));
-        }
-        .card::after {
-            content: '';
-            position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top right, var(--accent, var(--neon-pink)) 0%, transparent 50%);
+            background: radial-gradient(circle at top right, var(--accent, transparent) 0%, transparent 55%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
         .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent, var(--neon-pink));
-            box-shadow: 0 0 24px rgba(255, 41, 117, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px);
+            border-color: var(--accent, rgba(240, 66, 153, 0.5));
+            box-shadow:
+                0 0 0 1px var(--accent, rgba(240, 66, 153, 0.3)),
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 25px var(--accent-glow, rgba(240, 66, 153, 0.15));
         }
-        .card:hover::after { opacity: 0.08; }
+        .card:hover::before { opacity: 0.08; }
 
         .card-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 4px;
         }
         .card-icon {
-            font-size: 30px;
+            font-size: 28px;
             line-height: 1;
-            filter: drop-shadow(0 0 6px var(--accent, var(--neon-pink)));
+            filter: drop-shadow(0 0 8px var(--accent-glow, rgba(240, 66, 153, 0.4)));
         }
         .badge {
-            font-family: 'VT323', monospace;
-            font-size: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 3px 10px;
-            border-radius: 4px;
+            letter-spacing: 0.15em;
+            padding: 4px 10px;
+            border-radius: 6px;
             border: 1px solid currentColor;
+            opacity: 0.9;
         }
-        .badge.live { color: var(--neon-green); box-shadow: 0 0 8px rgba(57, 255, 20, 0.4); }
-        .badge.interno { color: var(--neon-cyan); box-shadow: 0 0 8px rgba(0, 240, 255, 0.4); }
+        .badge.live    { color: #4ade80; }
+        .badge.interno { color: var(--cyan); }
 
         .card-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 16px;
-            color: #fff;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 6px var(--accent, var(--neon-pink));
+            color: var(--text);
+            letter-spacing: 0.01em;
+            line-height: 1.3;
         }
         .card-desc {
             font-size: 13px;
@@ -280,73 +315,63 @@
             opacity: 0.85;
         }
         .card-url {
-            font-family: 'VT323', monospace;
-            font-size: 14px;
-            color: var(--accent, var(--neon-pink));
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            color: var(--text-dim);
             margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px dashed rgba(255, 41, 117, 0.2);
-            letter-spacing: 1px;
-            opacity: 0.85;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.06);
+            letter-spacing: 0.05em;
+            font-weight: 500;
         }
 
-        /* === ACCENTS === */
-        .card[data-accent="pink"]   { --accent: var(--neon-pink); }
-        .card[data-accent="cyan"]   { --accent: var(--neon-cyan); }
-        .card[data-accent="purple"] { --accent: var(--neon-purple); }
-        .card[data-accent="green"]  { --accent: var(--neon-green); }
-        .card[data-accent="orange"] { --accent: var(--neon-orange); }
-        .card[data-accent="yellow"] { --accent: var(--neon-yellow); }
+        /* Card accents */
+        .card[data-accent="pink"]   { --accent: rgba(240, 66, 153, 0.5);  --accent-glow: rgba(240, 66, 153, 0.25); }
+        .card[data-accent="purple"] { --accent: rgba(180, 71, 235, 0.5);  --accent-glow: rgba(180, 71, 235, 0.25); }
+        .card[data-accent="cyan"]   { --accent: rgba(26, 179, 255, 0.5);  --accent-glow: rgba(26, 179, 255, 0.25); }
+        .card[data-accent="orange"] { --accent: rgba(255, 140, 26, 0.55); --accent-glow: rgba(255, 140, 26, 0.25); }
 
         /* === FOOTER === */
         .footer {
             text-align: center;
             padding: 32px 20px 48px;
-            font-family: 'VT323', monospace;
-            font-size: 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
             color: var(--text-dim);
-            letter-spacing: 2px;
-            border-top: 1px solid rgba(176, 38, 255, 0.2);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border);
         }
-        .footer .triangle {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 8px var(--neon-cyan);
-        }
-
-        /* === SCAN LINES (sutil) === */
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent 0,
-                transparent 2px,
-                rgba(255, 255, 255, 0.015) 2px,
-                rgba(255, 255, 255, 0.015) 3px
-            );
-            pointer-events: none;
-            z-index: 100;
-        }
+        .footer .sep { color: var(--pink); opacity: 0.7; margin: 0 10px; }
 
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
-            .hero { padding: 60px 16px 80px; }
-            .sun { width: 200px; height: 200px; }
-            .container { padding: 40px 16px 60px; }
-            .section-title { font-size: 16px; letter-spacing: 2px; }
+            .hero { padding: 60px 16px 50px; }
+            .container { padding: 50px 16px 40px; }
+            .section-title { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
+<div class="deco">
+    <div class="line-h l1"></div>
+    <div class="line-h l2"></div>
+    <div class="line-h l3"></div>
+    <div class="dot d1"></div>
+    <div class="dot d2"></div>
+    <div class="dot d3"></div>
+    <div class="dot d4"></div>
+    <div class="dot d5"></div>
+</div>
+
 <header class="hero">
-    <div class="sun"></div>
-    <div class="grid-floor"></div>
     <div class="hero-content">
         <h1>BRUNOTROPOLIS</h1>
-        <div class="subtitle">&gt; HUB DE PROJETOS<span class="blink">_</span></div>
+        <div class="subtitle">Hub de Projetos</div>
     </div>
+    <div class="hero-line"></div>
 </header>
 
 <main class="container">
@@ -354,8 +379,8 @@
     <!-- ============ BRUNOTROPOLIS ============ -->
     <section class="section">
         <div class="section-header">
-            <span class="section-icon" style="color: var(--neon-cyan);">🕶️</span>
-            <h2 class="section-title cyan">brunotropolis</h2>
+            <span class="section-icon">🕶️</span>
+            <h2 class="section-title">brunotropolis</h2>
         </div>
         <div class="grid">
             <a class="card" data-accent="cyan" href="https://controle.brunotropolis.com.br/" target="_blank" rel="noopener">
@@ -367,7 +392,7 @@
                 <div class="card-desc">Checklist de entregas: status dos projetos por sprint, badges de prioridade, pendências bloqueadas e roadmap unificado.</div>
                 <div class="card-url">controle.brunotropolis.com.br</div>
             </a>
-            <a class="card" data-accent="green" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
+            <a class="card" data-accent="purple" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">💰</div>
                     <span class="badge interno">Interno</span>
@@ -400,11 +425,11 @@
     <!-- ============ BUSCADOR GEEK ============ -->
     <section class="section">
         <div class="section-header">
-            <span class="section-icon" style="color: var(--neon-green);">💻</span>
-            <h2 class="section-title green">Buscador Geek</h2>
+            <span class="section-icon">💻</span>
+            <h2 class="section-title">Buscador Geek</h2>
         </div>
         <div class="grid">
-            <a class="card" data-accent="green" href="https://brunotropolis.github.io/buscador-geek/" target="_blank" rel="noopener">
+            <a class="card" data-accent="cyan" href="https://brunotropolis.github.io/buscador-geek/" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">🔍</div>
                     <span class="badge live">Live</span>
@@ -419,11 +444,11 @@
     <!-- ============ MANUAL DO RECÉM-NASCIDO ============ -->
     <section class="section">
         <div class="section-header">
-            <span class="section-icon" style="color: var(--neon-pink);">👶</span>
-            <h2 class="section-title pink">Manual do Recém-Nascido</h2>
+            <span class="section-icon">👶</span>
+            <h2 class="section-title">Manual do Recém-Nascido</h2>
         </div>
         <div class="grid">
-            <a class="card" data-accent="green" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+            <a class="card" data-accent="pink" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">💬</div>
                     <span class="badge live">Live</span>
@@ -462,7 +487,7 @@
         </div>
 
         <!-- BIBLIOTECA DE PROJETOS (sub) -->
-        <div class="subsection-title">◆ Biblioteca de Projetos ◆</div>
+        <div class="subsection-title"><span class="diamond">◆</span> Biblioteca de Projetos <span class="diamond">◆</span></div>
         <div class="grid">
             <a class="card" data-accent="cyan" href="https://quiz.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
@@ -473,7 +498,7 @@
                 <div class="card-desc">Quiz interativo que identifica o perfil de sono do bebê. Versão pública para captação de leads.</div>
                 <div class="card-url">quiz.manualdorecemnascido.com.br</div>
             </a>
-            <a class="card" data-accent="yellow" href="https://cursos.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+            <a class="card" data-accent="orange" href="https://cursos.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">🎓</div>
                     <span class="badge live">Live</span>
@@ -500,7 +525,7 @@
                 <div class="card-desc">Formulário público. Quem responder válida ganha o e-book Enxoval Descomplicado.</div>
                 <div class="card-url">enxoval.manualdorecemnascido.com.br</div>
             </a>
-            <a class="card" data-accent="green" href="https://pesquisa.manualdorecemnascido.com.br/dashboard.html" target="_blank" rel="noopener">
+            <a class="card" data-accent="cyan" href="https://pesquisa.manualdorecemnascido.com.br/dashboard.html" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">📋</div>
                     <span class="badge interno">Interno</span>
@@ -509,7 +534,7 @@
                 <div class="card-desc">Dashboard interno (Parto + Enxoval). Visão geral, demografia, temas e respostas abertas.</div>
                 <div class="card-url">pesquisa.manualdorecemnascido.com.br/dashboard.html</div>
             </a>
-            <a class="card" data-accent="cyan" href="https://pesquisa.manualdorecemnascido.com.br/relatorio.html" target="_blank" rel="noopener">
+            <a class="card" data-accent="orange" href="https://pesquisa.manualdorecemnascido.com.br/relatorio.html" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">📈</div>
                     <span class="badge live">Live</span>
@@ -524,14 +549,13 @@
 </main>
 
 <footer class="footer">
-    <span class="triangle">▲</span>
-    &nbsp;ATUALIZADO EM <span id="lastUpdate"></span>&nbsp;
-    <span class="triangle">▲</span>
-    &nbsp;&nbsp;BRUNOTROPOLIS &copy; <span id="year"></span>
+    <span>Atualizado em <span id="lastUpdate"></span></span>
+    <span class="sep">·</span>
+    <span>brunotropolis &copy; <span id="year"></span></span>
 </footer>
 
 <script>
-    document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase();
+    document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
     document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
