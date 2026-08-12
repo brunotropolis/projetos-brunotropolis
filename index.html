@@ -268,6 +268,32 @@
         .card[data-accent="orange"] { --accent: rgba(255, 140, 26, 0.25); --accent-glow: rgba(255, 140, 26, 0.18); --accent-strong: rgba(255, 140, 26, 0.65); }
         .card[data-accent="lime"]   { --accent: rgba(197, 240, 44, 0.22); --accent-glow: rgba(197, 240, 44, 0.18); --accent-strong: rgba(197, 240, 44, 0.6); }
 
+        /* === DESTAQUE === */
+        .section.destaque { margin-bottom: 64px; }
+        .section.destaque .section-title {
+            background: linear-gradient(90deg, var(--pink), var(--orange), var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            filter: drop-shadow(0 0 18px rgba(240,66,153,0.35));
+        }
+        .section.destaque .grid {
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        }
+        .card.feat {
+            background: rgba(255, 255, 255, 0.035);
+        }
+        .card.feat::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-strong, var(--pink)), transparent 85%);
+            opacity: 0.85;
+        }
+        .card.feat .card-title { font-size: 17px; }
+
         .footer {
             text-align: center;
             padding: 32px 20px 48px;
@@ -363,39 +389,85 @@
     <svg class="deco-vector wave"        viewBox="0 0 90 24"><use href="#i-wave"/></svg>
     <svg class="deco-vector dot-cluster" viewBox="0 0 36 36"><use href="#i-dots"/></svg>
 
-    <!-- ============ BRUNOTROPOLIS ============ -->
-    <section class="section">
+    <!-- ============ DESTAQUE ============ -->
+    <section class="section destaque">
         <div class="section-header">
-            <span class="section-icon">🕶️</span>
-            <h2 class="section-title">brunotropolis</h2>
+            <span class="section-icon">⭐</span>
+            <h2 class="section-title">Destaque</h2>
         </div>
         <div class="grid">
-            <a class="card" data-accent="cyan" href="https://controle.brunotropolis.com.br/" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">📋</div>
-                    <span class="badge interno">Interno</span>
-                </div>
-                <div class="card-title">Controle de Projetos</div>
-                <div class="card-desc">Checklist de entregas: status dos projetos por sprint, badges de prioridade, pendências bloqueadas e roadmap unificado.</div>
-                <div class="card-url">controle.brunotropolis.com.br</div>
-            </a>
-            <a class="card" data-accent="purple" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
+            <a class="card feat" data-accent="purple" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">💰</div>
                     <span class="badge interno">Interno</span>
                 </div>
-                <div class="card-title">FINANCEIRO</div>
+                <div class="card-title">Financeiro</div>
                 <div class="card-desc">Painel financeiro: despesas, receitas, buckets, faturamento mensal, integração Greenn e Meta Ads.</div>
                 <div class="card-url">caixa.brunotropolis.com.br</div>
             </a>
-            <a class="card" data-accent="orange" href="https://videos.brunotropolis.com.br/" target="_blank" rel="noopener">
+            <a class="card feat" data-accent="cyan" href="https://dash.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
-                    <div class="card-icon">🎬</div>
+                    <div class="card-icon">📊</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Dashboard</div>
+                <div class="card-desc">Dashboard de campanhas Meta Ads com assistente IA (Austin Powers), alertas e relatório diário no WhatsApp.</div>
+                <div class="card-url">dash.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card feat" data-accent="pink" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">💬</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">CRM</div>
+                <div class="card-desc">Central de relacionamento com as alunas: acompanhamento, suporte e onboarding, base de contatos e construtor de automações no WhatsApp oficial.</div>
+                <div class="card-url">crm.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card feat" data-accent="orange" href="https://meteorico.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🚀</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Meteórico</div>
+                <div class="card-desc">Dashboard do funil de lançamento meteórico. Métricas, cronograma e gestão dos clubes Tetê e Soninho.</div>
+                <div class="card-url">meteorico.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card feat" data-accent="lime" href="https://tarefas.brunotropolis.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">✅</div>
                     <span class="badge interno">Interno</span>
                 </div>
-                <div class="card-title">Analisador de Vídeo</div>
-                <div class="card-desc">Transcrição + análise visual de edição de Reels, TikTok, Shorts e YouTube. Identifica hook, timeline, ritmo e técnicas de retenção.</div>
-                <div class="card-url">videos.brunotropolis.com.br</div>
+                <div class="card-title">Tarefas</div>
+                <div class="card-desc">Lista de tarefas estilo doc: Enter cria linha, Tab vira subitem, Enter em linha vazia volta nível. Múltiplas listas na sidebar, sync opcional pro GitHub.</div>
+                <div class="card-url">tarefas.brunotropolis.com.br</div>
+            </a>
+            <a class="card feat" data-accent="cyan" href="https://app.buscadorgeek.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🔍</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Buscador Geek</div>
+                <div class="card-desc">Painel admin de campanhas e ofertas: curadoria, fila de publicação e disparo pros canais de WhatsApp (ML, Amazon e Shopee).</div>
+                <div class="card-url">app.buscadorgeek.com.br</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ UTILIDADES ============ -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-icon">🧰</span>
+            <h2 class="section-title">Utilidades</h2>
+        </div>
+        <div class="grid">
+            <a class="card" data-accent="lime" href="https://utm.brunotropolis.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🔗</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">UTM</div>
+                <div class="card-desc">Gerador de URLs rastreadas com os 5 campos UTM + parâmetro src. Cria links curtos em manualdorecemnascido.com.br via Cloudflare Worker.</div>
+                <div class="card-url">utm.brunotropolis.com.br</div>
             </a>
             <a class="card" data-accent="pink" href="https://copy.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
@@ -406,107 +478,78 @@
                 <div class="card-desc">Gerador de roteiros do canal Brunotropolis com tom e quadros fixos. Quadros: Dia de Maldade, TOP 5, Testou, Maratona, Diário.</div>
                 <div class="card-url">copy.brunotropolis.com.br</div>
             </a>
-            <a class="card" data-accent="lime" href="https://tarefas.brunotropolis.com.br/" target="_blank" rel="noopener">
+            <a class="card" data-accent="orange" href="https://videos.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
-                    <div class="card-icon">✅</div>
+                    <div class="card-icon">🎬</div>
                     <span class="badge interno">Interno</span>
                 </div>
-                <div class="card-title">Tarefas</div>
-                <div class="card-desc">Lista de tarefas estilo doc: Enter cria linha, Tab vira subitem, Enter em linha vazia volta nível. Múltiplas listas na sidebar, sync opcional pro GitHub.</div>
-                <div class="card-url">tarefas.brunotropolis.com.br</div>
+                <div class="card-title">Analisador de Vídeos</div>
+                <div class="card-desc">Transcrição + análise visual de edição de Reels, TikTok, Shorts e YouTube. Identifica hook, timeline, ritmo e técnicas de retenção.</div>
+                <div class="card-url">videos.brunotropolis.com.br</div>
             </a>
             <a class="card" data-accent="orange" href="https://denuncias.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">🛡️</div>
                     <span class="badge interno">Interno</span>
                 </div>
-                <div class="card-title">Denúncias Instagram</div>
+                <div class="card-title">Denúncias do Instagram</div>
                 <div class="card-desc">Cadastra Reels da Day copiados em outros perfis e acompanha o status da denúncia de direitos autorais (feita uma a uma pelo navegador logado).</div>
                 <div class="card-url">denuncias.brunotropolis.com.br</div>
-            </a>
-            <a class="card" data-accent="lime" href="https://utm.brunotropolis.com.br/" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">🔗</div>
-                    <span class="badge interno">Interno</span>
-                </div>
-                <div class="card-title">UTM Builder</div>
-                <div class="card-desc">Gerador de URLs rastreadas com os 5 campos UTM + parâmetro src. Cria links curtos em manualdorecemnascido.com.br via Cloudflare Worker.</div>
-                <div class="card-url">utm.brunotropolis.com.br</div>
-            </a>
-            <a class="card" data-accent="pink" href="https://marcas.babytalks.com.br/" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">🤝</div>
-                    <span class="badge interno">Interno</span>
-                </div>
-                <div class="card-title">Prospecção Baby Talks</div>
-                <div class="card-desc">Prospecção de marcas/patrocinadores do evento Baby Talks: cadastra por link, acompanha Primeiro contato → Follow 1 → Follow 2 (com motivo ao finalizar) e segmenta por categoria e status. Sincroniza entre celular e PC.</div>
-                <div class="card-url">marcas.babytalks.com.br</div>
-            </a>
-        </div>
-    </section>
-
-    <!-- ============ BUSCADOR GEEK ============ -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-icon">💻</span>
-            <h2 class="section-title">Buscador Geek</h2>
-        </div>
-        <div class="grid">
-            <a class="card" data-accent="cyan" href="https://brunotropolis.github.io/buscador-geek/" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">🔍</div>
-                    <span class="badge live">Live</span>
-                </div>
-                <div class="card-title">Buscador Geek</div>
-                <div class="card-desc">Formulário de cadastro de ofertas para os canais de WhatsApp. Suporta ML, Amazon e Shopee com detecção automática de plataforma.</div>
-                <div class="card-url">brunotropolis.github.io/buscador-geek</div>
-            </a>
-        </div>
-    </section>
-
-    <!-- ============ MANUAL DO RECÉM-NASCIDO ============ -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-icon">👶</span>
-            <h2 class="section-title">Manual do Recém-Nascido</h2>
-        </div>
-        <div class="grid">
-            <a class="card" data-accent="pink" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">💬</div>
-                    <span class="badge live">Live</span>
-                </div>
-                <div class="card-title">CRM do Manual</div>
-                <div class="card-desc">Central de relacionamento com as alunas: 3 chats separados (acompanhamento, suporte e onboarding), base de contatos com garantia de 7 dias, e construtor visual de automações no WhatsApp oficial.</div>
-                <div class="card-url">crm.manualdorecemnascido.com.br</div>
-            </a>
-            <a class="card" data-accent="cyan" href="https://dash.manualdorecemnascido.com.br" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">📊</div>
-                    <span class="badge live">Live</span>
-                </div>
-                <div class="card-title">Meta Ads Dashboard</div>
-                <div class="card-desc">Dashboard de campanhas Meta Ads com assistente IA (Austin Powers), alertas e relatório diário no WhatsApp.</div>
-                <div class="card-url">dash.manualdorecemnascido.com.br</div>
-            </a>
-            <a class="card" data-accent="pink" href="https://meteorico.manualdorecemnascido.com.br" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">🚀</div>
-                    <span class="badge live">Live</span>
-                </div>
-                <div class="card-title">Funil Meteórico</div>
-                <div class="card-desc">Dashboard do funil de lançamento meteórico. Métricas, cronograma e gestão dos clubes Tetê e Soninho.</div>
-                <div class="card-url">meteorico.manualdorecemnascido.com.br</div>
             </a>
             <a class="card" data-accent="purple" href="https://dashquiz.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">🧒</div>
                     <span class="badge live">Live</span>
                 </div>
-                <div class="card-title">Dashboard Quiz Sono</div>
-                <div class="card-desc">Dashboard do quiz de sono do bebê. Métricas, perfis identificados e captação de leads.</div>
+                <div class="card-title">Dash Quiz</div>
+                <div class="card-desc">Painel unificado de todos os quizzes de sono do bebê. Métricas, perfis identificados e captação de leads por versão.</div>
                 <div class="card-url">dashquiz.manualdorecemnascido.com.br</div>
             </a>
+        </div>
+    </section>
+
+    <!-- ============ BIBLIOTECA DE PROJETOS ============ -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-icon">📚</span>
+            <h2 class="section-title">Biblioteca de Projetos</h2>
+        </div>
+
+        <!-- Páginas de Vendas -->
+        <div class="subsection-title"><span class="diamond">◆</span> Páginas de Vendas <span class="diamond">◆</span></div>
+        <div class="grid">
+            <a class="card" data-accent="orange" href="https://dbpocket.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🌙</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Dream Baby Pocket — Página de Venda</div>
+                <div class="card-desc">Landing geral do Dream Baby Pocket (R$67): descobre o perfil de sono e recebe o plano. Paleta clara verde, foto do bebê, pixel Meta + CAPI, checkout Greenn.</div>
+                <div class="card-url">dbpocket.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="lime" href="https://tdapocket.manualdorecemnascido.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🤱</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Técnica Dos Anjos Pocket</div>
+                <div class="card-desc">Página de vendas do produto Técnica Dos Anjos Pocket — método de pega e amamentação.</div>
+                <div class="card-url">tdapocket.manualdorecemnascido.com.br</div>
+            </a>
+            <a class="card" data-accent="purple" href="https://perfis.manualdorecemnascido.com.br/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">🐨</div>
+                    <span class="badge live">Live</span>
+                </div>
+                <div class="card-title">Perfis Dream Baby Pocket</div>
+                <div class="card-desc">Quiz + páginas de venda por perfil (canguru, coala, coruja, leão, suricato) do Dream Baby Pocket (R$67).</div>
+                <div class="card-url">perfis.manualdorecemnascido.com.br</div>
+            </a>
+        </div>
+
+        <!-- Manual do Recém-Nascido -->
+        <div class="subsection-title"><span class="diamond">◆</span> Manual do Recém-Nascido <span class="diamond">◆</span></div>
+        <div class="grid">
             <a class="card" data-accent="pink" href="https://perfis.manualdorecemnascido.com.br/dash" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">☁️</div>
@@ -516,20 +559,6 @@
                 <div class="card-desc">Métricas do quiz low ticket (R$67): funil de desistência, perfis, principais respostas e separação tráfego pago × orgânico.</div>
                 <div class="card-url">perfis.manualdorecemnascido.com.br/dash</div>
             </a>
-            <a class="card" data-accent="orange" href="https://dbpocket.manualdorecemnascido.com.br" target="_blank" rel="noopener">
-                <div class="card-top">
-                    <div class="card-icon">🌙</div>
-                    <span class="badge live">Live</span>
-                </div>
-                <div class="card-title">Dream Baby Pocket — Página de Venda</div>
-                <div class="card-desc">Landing geral do Dream Baby Pocket (R$67): responde o quiz, descobre o perfil de sono e recebe o plano. Paleta clara verde, foto do bebê, pixel Meta + CAPI, checkout Greenn.</div>
-                <div class="card-url">dbpocket.manualdorecemnascido.com.br</div>
-            </a>
-        </div>
-
-        <!-- BIBLIOTECA DE PROJETOS (sub) -->
-        <div class="subsection-title"><span class="diamond">◆</span> Biblioteca de Projetos <span class="diamond">◆</span></div>
-        <div class="grid">
             <a class="card" data-accent="cyan" href="https://quiz.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">✨</div>
@@ -585,32 +614,36 @@
                 <div class="card-url">pesquisa.manualdorecemnascido.com.br/relatorio.html</div>
             </a>
         </div>
-    </section>
 
-    <!-- ============ PÁGINAS DE VENDAS ============ -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-icon">🛒</span>
-            <h2 class="section-title">Páginas de Vendas</h2>
-        </div>
+        <!-- brunotropolis -->
+        <div class="subsection-title"><span class="diamond">◆</span> brunotropolis <span class="diamond">◆</span></div>
         <div class="grid">
-            <a class="card" data-accent="lime" href="https://tdapocket.manualdorecemnascido.com.br/" target="_blank" rel="noopener">
+            <a class="card" data-accent="cyan" href="https://controle.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
-                    <div class="card-icon">🤱</div>
-                    <span class="badge live">Live</span>
+                    <div class="card-icon">📋</div>
+                    <span class="badge interno">Interno</span>
                 </div>
-                <div class="card-title">Técnica Dos Anjos Pocket</div>
-                <div class="card-desc">Página de vendas do produto Técnica Dos Anjos Pocket — método de pega e amamentação.</div>
-                <div class="card-url">tdapocket.manualdorecemnascido.com.br</div>
+                <div class="card-title">Controle de Projetos</div>
+                <div class="card-desc">Checklist de entregas: status dos projetos por sprint, badges de prioridade, pendências bloqueadas e roadmap unificado.</div>
+                <div class="card-url">controle.brunotropolis.com.br</div>
             </a>
-            <a class="card" data-accent="purple" href="https://perfis.manualdorecemnascido.com.br/" target="_blank" rel="noopener">
+            <a class="card" data-accent="pink" href="https://marcas.babytalks.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
-                    <div class="card-icon">🐨</div>
+                    <div class="card-icon">🤝</div>
+                    <span class="badge interno">Interno</span>
+                </div>
+                <div class="card-title">Prospecção Baby Talks</div>
+                <div class="card-desc">Prospecção de marcas/patrocinadores do evento Baby Talks: cadastra por link, acompanha Primeiro contato → Follow 1 → Follow 2 e segmenta por categoria e status. Sincroniza entre celular e PC.</div>
+                <div class="card-url">marcas.babytalks.com.br</div>
+            </a>
+            <a class="card" data-accent="lime" href="https://brunotropolis.github.io/buscador-geek/" target="_blank" rel="noopener">
+                <div class="card-top">
+                    <div class="card-icon">📝</div>
                     <span class="badge live">Live</span>
                 </div>
-                <div class="card-title">Perfis Dream Baby Pocket</div>
-                <div class="card-desc">Quiz + páginas de venda por perfil (canguru, coala, coruja, leão, suricato) do Dream Baby Pocket (R$67).</div>
-                <div class="card-url">perfis.manualdorecemnascido.com.br</div>
+                <div class="card-title">Buscador Geek — Formulário</div>
+                <div class="card-desc">Formulário de cadastro de ofertas para os canais de WhatsApp. Suporta ML, Amazon e Shopee com detecção automática de plataforma.</div>
+                <div class="card-url">brunotropolis.github.io/buscador-geek</div>
             </a>
         </div>
     </section>
