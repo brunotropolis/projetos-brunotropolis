@@ -268,32 +268,6 @@
         .card[data-accent="orange"] { --accent: rgba(255, 140, 26, 0.25); --accent-glow: rgba(255, 140, 26, 0.18); --accent-strong: rgba(255, 140, 26, 0.65); }
         .card[data-accent="lime"]   { --accent: rgba(197, 240, 44, 0.22); --accent-glow: rgba(197, 240, 44, 0.18); --accent-strong: rgba(197, 240, 44, 0.6); }
 
-        /* === DESTAQUE === */
-        .section.destaque { margin-bottom: 64px; }
-        .section.destaque .section-title {
-            background: linear-gradient(90deg, var(--pink), var(--orange), var(--cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: none;
-            filter: drop-shadow(0 0 18px rgba(240,66,153,0.35));
-        }
-        .section.destaque .grid {
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        }
-        .card.feat {
-            background: rgba(255, 255, 255, 0.035);
-        }
-        .card.feat::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-strong, var(--pink)), transparent 85%);
-            opacity: 0.85;
-        }
-        .card.feat .card-title { font-size: 17px; }
-
         .footer {
             text-align: center;
             padding: 32px 20px 48px;
@@ -390,13 +364,13 @@
     <svg class="deco-vector dot-cluster" viewBox="0 0 36 36"><use href="#i-dots"/></svg>
 
     <!-- ============ DESTAQUE ============ -->
-    <section class="section destaque">
+    <section class="section">
         <div class="section-header">
             <span class="section-icon">⭐</span>
             <h2 class="section-title">Destaque</h2>
         </div>
         <div class="grid">
-            <a class="card feat" data-accent="purple" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
+            <a class="card" data-accent="purple" href="https://caixa.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">💰</div>
                     <span class="badge interno">Interno</span>
@@ -405,7 +379,7 @@
                 <div class="card-desc">Painel financeiro: despesas, receitas, buckets, faturamento mensal, integração Greenn e Meta Ads.</div>
                 <div class="card-url">caixa.brunotropolis.com.br</div>
             </a>
-            <a class="card feat" data-accent="cyan" href="https://dash.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+            <a class="card" data-accent="cyan" href="https://dash.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">📊</div>
                     <span class="badge live">Live</span>
@@ -414,7 +388,7 @@
                 <div class="card-desc">Dashboard de campanhas Meta Ads com assistente IA (Austin Powers), alertas e relatório diário no WhatsApp.</div>
                 <div class="card-url">dash.manualdorecemnascido.com.br</div>
             </a>
-            <a class="card feat" data-accent="pink" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+            <a class="card" data-accent="pink" href="https://crm.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">💬</div>
                     <span class="badge live">Live</span>
@@ -423,7 +397,7 @@
                 <div class="card-desc">Central de relacionamento com as alunas: acompanhamento, suporte e onboarding, base de contatos e construtor de automações no WhatsApp oficial.</div>
                 <div class="card-url">crm.manualdorecemnascido.com.br</div>
             </a>
-            <a class="card feat" data-accent="orange" href="https://meteorico.manualdorecemnascido.com.br" target="_blank" rel="noopener">
+            <a class="card" data-accent="orange" href="https://meteorico.manualdorecemnascido.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">🚀</div>
                     <span class="badge live">Live</span>
@@ -432,7 +406,7 @@
                 <div class="card-desc">Dashboard do funil de lançamento meteórico. Métricas, cronograma e gestão dos clubes Tetê e Soninho.</div>
                 <div class="card-url">meteorico.manualdorecemnascido.com.br</div>
             </a>
-            <a class="card feat" data-accent="lime" href="https://tarefas.brunotropolis.com.br/" target="_blank" rel="noopener">
+            <a class="card" data-accent="lime" href="https://tarefas.brunotropolis.com.br/" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">✅</div>
                     <span class="badge interno">Interno</span>
@@ -441,7 +415,7 @@
                 <div class="card-desc">Lista de tarefas estilo doc: Enter cria linha, Tab vira subitem, Enter em linha vazia volta nível. Múltiplas listas na sidebar, sync opcional pro GitHub.</div>
                 <div class="card-url">tarefas.brunotropolis.com.br</div>
             </a>
-            <a class="card feat" data-accent="cyan" href="https://app.buscadorgeek.com.br" target="_blank" rel="noopener">
+            <a class="card" data-accent="cyan" href="https://app.buscadorgeek.com.br" target="_blank" rel="noopener">
                 <div class="card-top">
                     <div class="card-icon">🔍</div>
                     <span class="badge live">Live</span>
@@ -532,8 +506,8 @@
                     <div class="card-icon">🤱</div>
                     <span class="badge live">Live</span>
                 </div>
-                <div class="card-title">Técnica Dos Anjos Pocket</div>
-                <div class="card-desc">Página de vendas do produto Técnica Dos Anjos Pocket — método de pega e amamentação.</div>
+                <div class="card-title">Guia da Pega</div>
+                <div class="card-desc">Página de vendas do Guia da Pega — método de pega e amamentação.</div>
                 <div class="card-url">tdapocket.manualdorecemnascido.com.br</div>
             </a>
             <a class="card" data-accent="purple" href="https://perfis.manualdorecemnascido.com.br/" target="_blank" rel="noopener">
